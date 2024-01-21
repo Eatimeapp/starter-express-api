@@ -122,15 +122,15 @@ exports.sendOrder = async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: 'hotmail',
     auth: {
-      user: 'apitesting123456789@outlook.com', // generated ethereal user
-      pass: 'Api123456789', // generated ethereal password
+      user: 'eatimeapp@outlook.com', // generated ethereal user
+      pass: 'Eatime123!', // generated ethereal password
     },
   });
 
   try {
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Eat Time" <apitesting123456789@outlook.com>', // sender address
+      from: '"Eat Time" <eatimeapp@outlook.com>', // sender address
       to: `${req.body.email}`, // list of receivers
       subject: 'Eat Time | You Got New Order', // Subject line
       text: 'Order Information', // plain text body
@@ -157,7 +157,7 @@ exports.sendOrder = async (req, res) => {
       message: 'Your Order is sent to the resturant!',
     });
   } catch (error) {
-    res.send({
+    res.status(403).send({
       success: false,
       error: error.message,
       message: 'Oops, an error occured, Please try again.',
